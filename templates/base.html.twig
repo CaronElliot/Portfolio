@@ -1,12 +1,28 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>
+            {{ title }}
+        </title>
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}
+        {% endblock %}
     </head>
+
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    {% block body %}
+    {% endblock %}
+
+    {{ encore_entry_script_tags('app') }}
+    {% block javascripts %}
+    {% endblock %}
     </body>
+
+    <footer>
+        {% block footer %}{% endblock %}
+    </footer>
 </html>
