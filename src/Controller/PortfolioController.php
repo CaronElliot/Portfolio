@@ -24,4 +24,20 @@ class PortfolioController extends AbstractController
     {
         return $this->render('portfolio/aboutme.html.twig');
     }
+
+    /**
+     * @Route("/projet", name="projet")
+     */
+    public function projet(): Response
+    {
+        return $this->render('portfolio/projet.html.twig');
+    }
+
+    /**
+     * @Route("/contactme", name="contactme")
+     */
+    public function contactme(): Response
+    {
+        return $this->render('portfolio/contactme.html.twig');
+    }
 }
