@@ -8,6 +8,7 @@
     "webpack-notifier": "^1.6.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@symfony/webpack-encore": "^0.31.0"
   }
 }
