@@ -8,16 +8,26 @@
 
 {% block body %}
     <section>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col text-center text-primary">
                     <h1>Ma formation</h1>
                     <br/>
                 </div>
             </div>
-            <div class="row">
-                <div class="col text-left">
-                    <p>Mes formations + images</p>
+            <div class="card-group">
+                <div class="row">
+                {% for formation in formations %}
+                        <div class="card" style="width: 35rem; margin-left: 10px; margin-bottom: 10px;">
+                            <img src="{{ asset('/images/' ~ formation.image.fichier) }}" class="card-img-top">
+                            <div class="card-body">
+                                <p class="card-text">{{ formation.description }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="blockquote-footer">{{ formation.dateDebut }} -> {{ formation.dateFin }}</span>
+                            </div>
+                        </div>
+                {% endfor %}
                 </div>
             </div>
         </div>
@@ -25,40 +35,31 @@
     <br/>
     <br/>
     <br/>
-
-
 
     <section>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col text-center text-primary" >
-                    <h1>Qualités</h1>
-                    <br/>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-4 col-sm-12">
-                    <h2>Organisé</h2>
-                    <p>Texte + potentiellement image</p>
-                    <i class="fas fa-sitemap"></i>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2>Rigoureux</h2>
-                    <p>Texte + potentiellement image</p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2>Autonome</h2>
-                    <p>Texte + potentiellement image</p>
-                </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center text-primary" >
+                <h1>Qualités</h1>
+                <br/>
             </div>
         </div>
+        <div class="row">
+            {% for qualite in qualites %}
+                <div class=" col-4 text-center">
+                    <i class="{{ asset(qualite.icone.classe) }}"></i>
+                    <div>
+                        <h2>{{ qualite.nom }}</h2>
+                        <p>{{ qualite.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     </section>
     <br/>
     <br/>
     <br/>
-
-
-
 
     <section>
         <div class="container-fluid">
@@ -69,18 +70,12 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-4 col-sm-12">
-                    <h2>Informatique</h2>
-                    <p>Texte + image</p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2>Animés</h2>
-                    <p>Texte + image</p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2>Jeux vidéos</h2>
-                    <p>Texte + image</p>
-                </div>
+                {% for loisir in loisirs %}
+                    <div class="col-md-4 col-sm-12">
+                        <h2>{{ loisir.nom }}</h2>
+                        <p>{{ loisir.description }}</p>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

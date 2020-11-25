@@ -24,8 +24,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col text-left">
-                    <p>a propos + en savoir plus qui mène directement à la page aboutme</p>
+                <div class="col text-center">
+                    <p> Je m'appelle Elliot Caron.
+                        <br/>Je suis étudiant en informatique à l'IUT de Lens.
+                        <br/>J'ai 19 ans. >> <a href="{{ path('aboutme') }}">En savoir plus sur moi</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -35,34 +38,23 @@
     <br/>
 
     <section>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col text-center text-primary">
                     <h1>Mes Projets</h1>
+                    <img src="{{ asset('/images/' ~ projet.image.fichier) }}">
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <p>Projet 1 + image</p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <p>Projet 2 + image</p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <p>Projet 3 + image</p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <p>Projet 4 + image</p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <p>Projet 5 + image</p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <p>Projet 6 + image</p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <p>Projet 7 + image</p>
-                </div>
+                {% for projet in projets %}
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card bg-dark primary">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">{{ projet.nom }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

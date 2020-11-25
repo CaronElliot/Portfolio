@@ -23,15 +23,14 @@ class Qualite
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $description;
 
     /**
-     * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity=Icone::class, cascade={"persist", "remove"})
      */
-    private $image;
+    private $icone;
 
     public function getId(): ?int
     {
@@ -62,14 +61,14 @@ class Qualite
         return $this;
     }
 
-    public function getImage(): ?Image
+    public function getIcone(): ?Icone
     {
-        return $this->image;
+        return $this->icone;
     }
 
-    public function setImage(Image $image): self
+    public function setIcone(?Icone $icone): self
     {
-        $this->image = $image;
+        $this->icone = $icone;
 
         return $this;
     }

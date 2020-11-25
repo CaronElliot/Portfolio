@@ -5,6 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Formation;
+use App\Entity\Qualite;
+use App\Entity\Loisir;
+use App\Entity\Projet;
 
 class PortfolioController extends AbstractController
 {
@@ -14,7 +18,13 @@ class PortfolioController extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('portfolio/home.html.twig', ["projets" => projets]);
+        $repoProjet = $this->getDoctrine()->getRepository(Projet::class);
+
+        $projets = $repoProjet->findAll();
+        return $this->render('portfolio/home.html.twig',
+            [
+            'projets'=>$projets,
+            ]);
     }
 
     /**
@@ -22,7 +32,21 @@ class PortfolioController extends AbstractController
      */
     public function aboutme(): Response
     {
-        return $this->render('portfolio/aboutme.html.twig');
+        $repoFormation = $this->getDoctrine()->getRepository(Formation::class);
+        $repoQualite = $this->getDoctrine()->getRepository(Qualite::class);
+        $repoLoisir = $this->getDoctrine()->getRepository(Loisir::class);
+
+        $formations = $repoFormation->findAll();
+        $qualites = $repoQualite->findAll();
+        $loisirs = $repoLoisir->findAll();
+
+        dump($formations[0]->getImage());
+        return $this->render('portfolio/aboutme.html.twig',
+            [
+                'formations'=>$formations,
+                'qualites'=>$qualites,
+                'loisirs'=>$loisirs,
+            ]);
     }
 
     /**
@@ -31,6 +55,7 @@ class PortfolioController extends AbstractController
     public function projet(): Response
     {
         return $this->render('portfolio/projet.html.twig');
+
     }
 
     /**

@@ -25,11 +25,6 @@ class Projet
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $description;
-
-    /**
      * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -49,6 +44,11 @@ class Projet
      * @ORM\ManyToMany(targetEntity=Personne::class)
      */
     private $personnes;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     public function __construct()
     {
@@ -74,17 +74,6 @@ class Projet
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
 
     public function getCouverture(): ?Image
     {
@@ -166,6 +155,18 @@ class Projet
     public function removePersonne(Personne $personne): self
     {
         $this->personnes->removeElement($personne);
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
