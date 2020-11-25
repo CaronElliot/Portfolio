@@ -14,7 +14,7 @@ class PortfolioController extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('portfolio/home.html.twig');
+        return $this->render('portfolio/home.html.twig', ["projets" => projets]);
     }
 
     /**

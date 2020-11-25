@@ -25,7 +25,7 @@ class Formation
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $teDebut;
+    private $dateDebut;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,14 +55,14 @@ class Formation
         return $this;
     }
 
-    public function getTeDebut(): ?string
+    public function getDateDebut(): ?string
     {
-        return $this->teDebut;
+        return $this->dateDebut;
     }
 
-    public function setTeDebut(string $teDebut): self
+    public function setDateDebut(string $dateDebut): self
     {
-        $this->teDebut = $teDebut;
+        $this->dateDebut = $dateDebut;
 
         return $this;
     }
