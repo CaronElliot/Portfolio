@@ -10,7 +10,14 @@
     </head>
 
     <header>
-        {% block header %}{% endblock %}
+        {% block header %}
+            <nav class="navbar sticky-top bg-light">
+                <a class="navbar-brand text-left" href="{{ path('home') }}">Elliot Caron</a>
+                <a class="navbar-brand text-left" href="{{ path('aboutme') }}">A propos de moi</a>
+                <a class="navbar-brand text-left" href="{{ path('projet') }}">Mes projets</a>
+                <a class="navbar-brand text-left" href="{{ path('contactme') }}">Me contacter</a>
+            </nav>
+        {% endblock %}
     </header>
 
     <body>
@@ -24,6 +31,40 @@
 
     <footer>
         {% block footer %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>Si vous avez besoin de plus d'information</h1>
+                        <br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="#"><button type="button" class="btn btn-primary btn-lg">Télécharger mon C.V.</button></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <br/>
+                        <h1>OU</h1>
+                        <br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 text-center">
+                        <h4>Téléphone</h4>
+                        <br/>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center">
+                        <h4>Email</h4>
+                        <br/>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center">
+                        <h4><a href="www.linkedin.com/in/elliot-caron">Linkedin</a></h4>
+                        <br/>
+                    </div>
+                </div>
+            </div>
         {% endblock %}
     </footer>
 </html>

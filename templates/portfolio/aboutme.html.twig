@@ -2,12 +2,9 @@
 
 {% set title = 'Elliot CARON' %}
 
-{% block header %}
-    <p>Navbar en position fixed</p>
-{% endblock %}
-
 {% block body %}
-    <section>
+    <section class="background_color_section">
+        <br/>
         <div class="container">
             <div class="row">
                 <div class="col text-center text-primary">
@@ -18,26 +15,28 @@
             <div class="card-group">
                 <div class="row">
                 {% for formation in formations %}
-                        <div class="card" style="width: 35rem; margin-left: 10px; margin-bottom: 10px;">
+                    <div class="card-deck">
+                        <div class="card" style="width: 35rem;">
                             <img src="{{ asset('/images/' ~ formation.image.fichier) }}" class="card-img-top">
                             <div class="card-body">
-                                <p class="card-text">{{ formation.description }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="blockquote-footer">{{ formation.dateDebut }} -> {{ formation.dateFin }}</span>
+                                <h5 class="card-title">{{ formation.nom }}</h5>
+                                <p class="card-text">{{ formation.lieu }}</p>
+                                <div class="card-footer">
+                                    <span class="blockquote-footer">{{ formation.dateDebut }} -> {{ formation.dateFin }}</span>
+                                </div>
                             </div>
                         </div>
+                    </div>
                 {% endfor %}
                 </div>
             </div>
         </div>
+        <br/>
     </section>
-    <br/>
-    <br/>
     <br/>
 
     <section>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col text-center text-primary" >
                 <h1>Qualités</h1>
@@ -47,9 +46,9 @@
         <div class="row">
             {% for qualite in qualites %}
                 <div class=" col-4 text-center">
-                    <i class="{{ asset(qualite.icone.classe) }}"></i>
+                    <h2>{{ qualite.nom }}</h2>
+                    <i class="fas fa-folder-open"></i>
                     <div>
-                        <h2>{{ qualite.nom }}</h2>
                         <p>{{ qualite.description }}</p>
                     </div>
                 </div>
@@ -61,8 +60,9 @@
     <br/>
     <br/>
 
-    <section>
-        <div class="container-fluid">
+    <section class="background_color_section">
+        <br/>
+        <div class="container">
             <div class="row">
                 <div class="col text-center text-primary" >
                     <h1>Loisirs</h1>
@@ -73,13 +73,13 @@
                 {% for loisir in loisirs %}
                     <div class="col-md-4 col-sm-12">
                         <h2>{{ loisir.nom }}</h2>
-                        <p>{{ loisir.description }}</p>
+                        <br/>
+                        <img src="{{ asset('/images/' ~ loisir.image.fichier) }}" width="300" height="170">
+                        <p><br/>{{ loisir.description }}</p>
                     </div>
                 {% endfor %}
             </div>
         </div>
+    <br/>
     </section>
-    <br/>
-    <br/>
-    <br/>
 {% endblock %}

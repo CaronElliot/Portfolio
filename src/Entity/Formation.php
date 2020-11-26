@@ -34,9 +34,14 @@ class Formation
     private $image;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $lieu;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
 
     public function getId(): ?int
     {
@@ -80,14 +85,26 @@ class Formation
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getLieu(): ?string
     {
-        return $this->description;
+        return $this->lieu;
     }
 
-    public function setDescription(string $description): self
+    public function setLieu(string $lieu): self
     {
-        $this->description = $description;
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
 
         return $this;
     }

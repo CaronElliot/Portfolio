@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Formation;
@@ -20,10 +21,10 @@ class PortfolioController extends AbstractController
     {
         $repoProjet = $this->getDoctrine()->getRepository(Projet::class);
 
-        $projets = $repoProjet->findAll();
+        $projets = $repoProjet->findBy([],['id' => 'asc']);
         return $this->render('portfolio/home.html.twig',
             [
-            'projets'=>$projets,
+            'projets'=>$projets
             ]);
     }
 
@@ -36,9 +37,9 @@ class PortfolioController extends AbstractController
         $repoQualite = $this->getDoctrine()->getRepository(Qualite::class);
         $repoLoisir = $this->getDoctrine()->getRepository(Loisir::class);
 
-        $formations = $repoFormation->findAll();
-        $qualites = $repoQualite->findAll();
-        $loisirs = $repoLoisir->findAll();
+        $formations = $repoFormation->findBy([],['dateDebut' => 'asc']);
+        $qualites = $repoQualite->findBy([],['id' => 'asc']);
+        $loisirs = $repoLoisir->findBy([],['id' => 'asc']);
 
         dump($formations[0]->getImage());
         return $this->render('portfolio/aboutme.html.twig',
@@ -55,7 +56,6 @@ class PortfolioController extends AbstractController
     public function projet(): Response
     {
         return $this->render('portfolio/projet.html.twig');
-
     }
 
     /**
