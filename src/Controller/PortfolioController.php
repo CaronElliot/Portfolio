@@ -51,11 +51,17 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("/projet", name="projet")
+     * @Route("/projet/{id}", name="projet")
      */
-    public function projet(): Response
+    public function projet($id): Response
     {
-        return $this->render('portfolio/projet.html.twig');
+        $repoProjet=$this->getDoctrine()->getRepository(Projet::class);
+
+        $projet = $repoProjet->find($id);
+
+        return $this->render('portfolio/projet.html.twig',[
+            'projet' => $projet
+        ]);
     }
 
     /**

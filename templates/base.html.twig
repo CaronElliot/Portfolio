@@ -14,8 +14,8 @@
             <nav class="navbar sticky-top bg-light">
                 <a class="navbar-brand text-left" href="{{ path('home') }}">Elliot Caron</a>
                 <a class="navbar-brand text-left" href="{{ path('aboutme') }}">A propos de moi</a>
-                <a class="navbar-brand text-left" href="{{ path('projet') }}">Mes projets</a>
                 <a class="navbar-brand text-left" href="{{ path('contactme') }}">Me contacter</a>
+                <a class="navbar-brand text-left" href="#">Mes projets</a>
             </nav>
         {% endblock %}
     </header>
@@ -29,7 +29,7 @@
     {% endblock %}
     </body>
 
-    <footer>
+    <footer class="background_color_section">
         {% block footer %}
             <div class="container-fluid">
                 <div class="row">
@@ -40,27 +40,27 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
-                        <a href="#"><button type="button" class="btn btn-primary btn-lg">Télécharger mon C.V.</button></a>
+                        <a href={{ asset('/images/CV.pdf') }}><button type="button" class="btn btn-primary btn-lg">Télécharger mon C.V.</button></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
                         <br/>
-                        <h1>OU</h1>
+                        <h1>Ou contactez moi</h1>
                         <br/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-12 text-center">
-                        <h4>Téléphone</h4>
+                        <h4>Logo tel <br/><a href="tel:+33781278939">+33 7 81 27 89 39</a></h4>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <h4>Email</h4>
+                        <h4>Logo mail <br/><a href="mailto:?to=Elliot.caron13@gmail.com">elliot.caron13@gmail.com</a></h4>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <h4><a href="www.linkedin.com/in/elliot-caron">Linkedin</a></h4>
+                        <h4>Logo linkedin <br/><a href="www.linkedin.com/in/elliot-caron">Linkedin</a></h4>
                         <br/>
                     </div>
                 </div>
