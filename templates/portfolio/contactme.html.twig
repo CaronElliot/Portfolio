@@ -1,12 +1,40 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme formDemande 'bootstrap_4_layout.html.twig' %}
+
 {% set title = 'Elliot CARON' %}
 
 {% block header %}
     {{ parent() }}
-    <h1>Contact Me</h1>
 {% endblock %}
 
 {% block body %}
-    <p>Faire le formulaire (pas tout de suite)</p>
+
+    <section>
+        <div class="container">
+            <h1 class="text-primary text-center">Me contacter</h1>
+            {{ form_start(formDemande) }}
+
+            {{ form_row(formDemande.nom_entreprise,{'label' : "Nom de l'entreprise",
+                'required' : true,
+                'attr' : {'placeholder' : "Nom de l'entreprise"}
+            }) }}
+            {{ form_row(formDemande.objectif,{'label' : "Pourquoi me contacter ?",
+                'required' : true,
+                'attr' : {'placeholder' : "Pourquoi me contacter ?"}
+            }) }}
+            {{ form_row(formDemande.email,{'label' : "Email",
+                'required' : true,
+                'attr' : {'placeholder' : "Email"}
+            }) }}
+            {{ form_row(formDemande.telephone,{'label' : "Numéro de téléphone (optionnel)",
+                'required' :false,
+                'attr' : {'placeholder' : "Numéro de téléphone"}
+            }) }}
+
+            {{ form_end(formDemande) }}
+        </div>
+    </section>
+
+
 {% endblock %}

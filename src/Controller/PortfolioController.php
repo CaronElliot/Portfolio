@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Demande;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Formation;
@@ -67,8 +72,31 @@ class PortfolioController extends AbstractController
     /**
      * @Route("/contactme", name="contactme")
      */
-    public function contactme(): Response
+    public function contactme(Request $request, EntityManagerInterface $manager)
     {
-        return $this->render('portfolio/contactme.html.twig');
+        $demande=new Demande();
+
+        $form=$this->createFormBuilder($demande)
+                    ->add('nom_entreprise')
+                    ->add('objectif')
+                    ->add('email', EmailType::class)
+                    ->add('telephone',TelType::class)
+                    ->add('envoyer',SubmitType::class,[
+                        'label'=> "Envoyer"
+                    ])
+                    ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($demande);
+            $manager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('portfolio/contactme.html.twig',[
+            'formDemande' => $form->createView()
+        ]);
     }
 }

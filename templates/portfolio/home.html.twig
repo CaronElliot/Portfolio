@@ -39,6 +39,7 @@
     <br/>
     <br/>
 
+
     <section>
         <div class="container">
             <div class="row">
@@ -51,14 +52,12 @@
                 {% for projet in projets %}
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <img src="{{ asset('/images/' ~ projet.couverture.fichier) }}" width="100%" height="70%">
-                        <a href="{{ path('projet',{'id': projet.id})}}"><h3>{{ projet.nom }}</h3></a>
+                        <a href="{{ path('projet',{'id': projet.id})}}"><h4>{{ projet.nom }}</h4></a>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </section>
-    <br/>
-    <br/>
     <br/>
 {% endblock %}
 
