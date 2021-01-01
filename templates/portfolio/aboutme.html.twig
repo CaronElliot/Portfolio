@@ -3,12 +3,13 @@
 {% set title = 'Elliot CARON' %}
 
 {% block body %}
-    <section class="background_color_section">
+    <section class="background_color_section_2">
         <br/>
         <div class="container">
             <div class="row">
                 <div class="col text-center text-primary">
                     <h1>Ma formation</h1>
+                    <hr class="hrbrown"/>
                     <br/>
                 </div>
             </div>
@@ -33,46 +34,47 @@
         </div>
         <br/>
     </section>
-    <br/>
 
-    <section>
-    <div class="container">
-        <div class="row">
-            <div class="col text-center text-primary" >
-                <h1>Qualités</h1>
-                <br/>
-            </div>
-        </div>
-        <div class="row">
-            {% for qualite in qualites %}
-                <div class=" col-md-4 col-sm-12 text-center">
-                    <h2>{{ qualite.nom }}</h2>
-                    <i class="fas fa-folder-open"></i>
-                    <div>
-                        <p>{{ qualite.description }}</p>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-    </section>
-    <br/>
-    <br/>
-    <br/>
-
-    <section class="background_color_section">
+    <section class="background_color_section_1">
         <br/>
         <div class="container">
             <div class="row">
-                <div class="col text-center text-primary" >
+                <div class="col text-center text-white">
+                    <h1>Qualités</h1>
+                    <hr class="hrwhite"/>
+                    <br/>
+                </div>
+            </div>
+            <div class="row">
+                {% for qualite in qualites %}
+                    <div class=" col-md-4 col-sm-12 text-center">
+                        <h3>{{ qualite.nom }}</h3>
+                        <i class="fas fa-folder-open fa-5x"></i>
+                        <div>
+                            <p>{{ qualite.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <br/>
+    </section>
+
+    <section class="background_color_section_2">
+        <br/>
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center text-primary">
                     <h1>Loisirs</h1>
+                    <hr class="hrbrown"/>
                     <br/>
                 </div>
             </div>
             <div class="row text-center">
                 {% for loisir in loisirs %}
                     <div class="col-md-4 col-sm-12">
-                        <h2>{{ loisir.nom }}</h2>
+                        <h3>{{ loisir.nom }}</h3>
                         <br/>
                         <img src="{{ asset('/images/' ~ loisir.image.fichier) }}" width="235" height="120">
                         <p><br/>{{ loisir.description }}</p>

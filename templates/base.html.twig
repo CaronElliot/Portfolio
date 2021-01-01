@@ -6,17 +6,22 @@
         </title>
         {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
         {% endblock %}
     </head>
 
     <header>
         {% block header %}
-            <nav class="navbar sticky-top bg-light">
-                <a class="navbar-brand text-left" href="{{ path('home') }}">Elliot Caron</a>
-                <a class="navbar-brand text-left" href="{{ path('aboutme') }}">A propos de moi</a>
-                <a class="navbar-brand text-left" href="{{ path('contactme') }}">Me contacter</a>
-                <a class="navbar-brand text-left" href="#">Mes projets</a>
-            </nav>
+            <section>
+                <nav class="navbar sticky-top bg-light ">
+                    <a class="navbar-brand text-left text-secondary" href="{{ path('home') }}"><h4>Elliot Caron</h4></a>
+                    <a class="navbar-brand text-left text-secondary" href="{{ path('aboutme') }}"><h4>A propos de moi</h4></a>
+                    <a class="navbar-brand text-left text-secondary" href="{{ path('contactme') }}"><h4>Me contacter</h4></a>
+                    <a class="navbar-brand text-left text-secondary" href="#"><h4>Mes projets</h4></a>
+                </nav>
+            </section>
         {% endblock %}
     </header>
 
@@ -29,38 +34,39 @@
     {% endblock %}
     </body>
 
-    <footer class="background_color_section">
+    <footer class="background_color_section_1">
         {% block footer %}
+            <br/>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1>Pour plus d'informations</h1>
+                        <br/>
+                        <a href="{{ path('contactme') }}" class="text-white"><h1>Contactez moi</h1></a>
+                        <hr class="hrwhite"/>
                         <br/>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <a href={{ asset('/images/CV.pdf') }}><button type="button" class="btn btn-primary btn-lg">Télécharger mon C.V.</button></a>
+                <div class="row offset-2">
+                    <div class="col-5 text-center">
+                        <a href={{ asset('/images/CV_FR.pdf') }}><button type="button" class="btn btn-primary btn-lg">Télécharger mon C.V.</button></a>
+                    </div>
+                    <div class="col-4 text-center">
+                        <a href={{ asset('/images/CV_AN.pdf') }}><button type="button" class="btn btn-primary btn-lg">Download my C.V.</button></a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <br/>
-                        <a href="{{ path('contactme') }}"><h1>Ou contactez moi</h1></a>
-                        <br/>
-                    </div>
-                </div>
+                <br/>
+                <br/>
                 <div class="row">
                     <div class="col-lg-4 col-md-12 text-center">
-                        <h4>Logo tel <br/><a href="tel:+33781278939">+33 7 81 27 89 39</a></h4>
+                        <p style="font-size: 24px"><i class="fas fa-folder-open fa-5x"></i> <br/><a href="tel:+33781278939" class="text-dark">+33 7 81 27 89 39</a></p>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <h4>Logo mail <br/><a href="mailto:?to=Elliot.caron13@gmail.com">elliot.caron13@gmail.com</a></h4>
+                        <p style="font-size: 24px"><i class="fas fa-folder-open fa-5x"></i> <br/><a href="mailto:?to=Elliot.caron13@gmail.com" class="text-dark">elliot.caron13@gmail.com</a></p>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <h4>Logo linkedin <br/><a href="https://www.linkedin.com/in/elliot-caron/">www.linkedin.com/in/elliot-caron</a></h4>
+                        <p style="font-size: 24px"><i class="fas fa-folder-open fa-5x"></i> <br/><a href="https://www.linkedin.com/in/elliot-caron/" class="text-dark">www.linkedin.com/in/elliot-caron</a></p>
                         <br/>
                     </div>
                 </div>

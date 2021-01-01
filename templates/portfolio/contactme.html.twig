@@ -10,9 +10,11 @@
 
 {% block body %}
 
-    <section>
+    <section class="background_color_section_2">
+        <br/>
         <div class="container">
             <h1 class="text-primary text-center">Me contacter</h1>
+            <hr class="hrbrown"/>
             {{ form_start(formDemande) }}
 
             {{ form_row(formDemande.nom_entreprise,{'label' : "Nom de l'entreprise",
@@ -34,6 +36,7 @@
 
             {{ form_end(formDemande) }}
         </div>
+        <br/>
     </section>
 
 

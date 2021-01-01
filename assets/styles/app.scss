@@ -1,6 +1,6 @@
 $theme-colors:(
-        "primary": #0b97b0,
-        "secondary": white,
+        "primary": #B0550B,
+        "secondary": #02C7AF,
 );
 
 @import "~bootstrap/scss/bootstrap";
@@ -15,6 +15,40 @@ $theme-colors:(
   height: 70%;
 }
 
-.background_color_section{
-  background-color : lightgray;
+.text-gris{
+  color : #CBCFCB;
+}
+
+.background_color_section_1{
+  background-color : #02C7AF;
+}
+
+.background_color_section_2{
+  background-color : #CBCFCB;
+}
+
+h1,h2,h3{
+  font-family: 'Raleway', sans-serif;
+  text-transform : uppercase;
+}
+
+h4,h5,h6{
+  font-family: 'Fira Sans', sans-serif;
+}
+
+section, footer {
+  font-family: 'Roboto', sans-serif;
+  font-size : 18.5px;
+}
+
+hr{
+  width : 100px
+}
+
+.hrbrown{
+  background-color : #B0550B;
+}
+
+.hrwhite{
+  background-color : white;
 }
