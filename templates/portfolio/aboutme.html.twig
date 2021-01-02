@@ -3,7 +3,7 @@
 {% set title = 'Elliot CARON' %}
 
 {% block body %}
-    <section class="background_color_section_2">
+    <section>
         <br/>
         <div class="container">
             <div class="row">
@@ -49,7 +49,7 @@
                 {% for qualite in qualites %}
                     <div class=" col-md-4 col-sm-12 text-center">
                         <h3>{{ qualite.nom }}</h3>
-                        <i class="fas fa-folder-open fa-5x"></i>
+                        <i class="{{ qualite.icone.classe }} fa-4x"></i>
                         <div>
                             <p>{{ qualite.description }}</p>
                         </div>
@@ -60,7 +60,7 @@
         <br/>
     </section>
 
-    <section class="background_color_section_2">
+    <section>
         <br/>
         <br/>
         <div class="container">

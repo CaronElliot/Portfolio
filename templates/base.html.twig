@@ -16,10 +16,17 @@
         {% block header %}
             <section>
                 <nav class="navbar sticky-top bg-light ">
-                    <a class="navbar-brand text-left text-secondary" href="{{ path('home') }}"><h4>Elliot Caron</h4></a>
+                    <a class="navbar-brand text-left text-primary" href="{{ path('home') }}"><h3>Elliot Caron</h3></a>
                     <a class="navbar-brand text-left text-secondary" href="{{ path('aboutme') }}"><h4>A propos de moi</h4></a>
+                    <div class="nav-item dropdown">
+                        <button class="btn text-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h4>Mes projets</h4></button>
+                        <div class="dropdown-menu">
+                            {% for projet in stejorp %}
+                                <a class="dropdown-item" href="{{ path('projet',{'id': projet.id})}}">{{ projet.nom }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
                     <a class="navbar-brand text-left text-secondary" href="{{ path('contactme') }}"><h4>Me contacter</h4></a>
-                    <a class="navbar-brand text-left text-secondary" href="#"><h4>Mes projets</h4></a>
                 </nav>
             </section>
         {% endblock %}
@@ -58,15 +65,16 @@
                 <br/>
                 <div class="row">
                     <div class="col-lg-4 col-md-12 text-center">
-                        <p style="font-size: 24px"><i class="fas fa-folder-open fa-5x"></i> <br/><a href="tel:+33781278939" class="text-dark">+33 7 81 27 89 39</a></p>
+                        <p style="font-size: 24px"><a href="tel:+33781278939" class="text-dark"><i class="fas fa-mobile-alt fa-3x" style="padding-bottom: 10px"></i> <br/>+33 7 81 27 89 39</a></p>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <p style="font-size: 24px"><i class="fas fa-folder-open fa-5x"></i> <br/><a href="mailto:?to=Elliot.caron13@gmail.com" class="text-dark">elliot.caron13@gmail.com</a></p>
+                        <p style="font-size: 24px"><a href="mailto:?to=Elliot.caron13@gmail.com" class="text-dark"><i class="fas fa-at fa-3x" style="padding-bottom: 10px"></i> <br/>elliot.caron13@gmail.com</a></p>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <p style="font-size: 24px"><i class="fas fa-folder-open fa-5x"></i> <br/><a href="https://www.linkedin.com/in/elliot-caron/" class="text-dark">www.linkedin.com/in/elliot-caron</a></p>
+                        <p style="font-size: 24px"><a href="https://www.linkedin.com/in/elliot-caron/" class="text-dark"><i class="fab fa-linkedin-in fa-3x"
+                                style="padding-bottom: 10px"></i> <br/>www.linkedin.com/in/elliot-caron</a></p>
                         <br/>
                     </div>
                 </div>

@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Demande;
+use App\Form\DemandeType;
+use App\Notifier\DemandeNotifier;
+use App\Repository\ProjetRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -19,6 +22,18 @@ use App\Entity\Projet;
 class PortfolioController extends AbstractController
 {
 
+
+    private function myrender(string $view, array $parameters = [], Response $response = null) {
+
+        $projets = $this->getDoctrine()->getRepository(Projet::class)->findBy([],['id' => 'asc']);
+
+        return $this->render($view,
+            ['stejorp' => $projets] + $parameters
+        );
+    }
+
+
+
     /**
      * @Route("/", name="home")
      */
@@ -27,7 +42,7 @@ class PortfolioController extends AbstractController
         $repoProjet = $this->getDoctrine()->getRepository(Projet::class);
 
         $projets = $repoProjet->findBy([],['id' => 'asc']);
-        return $this->render('portfolio/home.html.twig',
+        return $this->myrender('portfolio/home.html.twig',
             [
             'projets'=>$projets
             ]);
@@ -47,7 +62,7 @@ class PortfolioController extends AbstractController
         $loisirs = $repoLoisir->findBy([],['id' => 'asc']);
 
         dump($formations[0]->getImage());
-        return $this->render('portfolio/aboutme.html.twig',
+        return $this->myrender('portfolio/aboutme.html.twig',
             [
                 'formations'=>$formations,
                 'qualites'=>$qualites,
@@ -64,7 +79,7 @@ class PortfolioController extends AbstractController
 
         $projet = $repoProjet->find($id);
 
-        return $this->render('portfolio/projet.html.twig',[
+        return $this->myrender('portfolio/projet.html.twig',[
             'projet' => $projet
         ]);
     }
@@ -72,30 +87,21 @@ class PortfolioController extends AbstractController
     /**
      * @Route("/contactme", name="contactme")
      */
-    public function contactme(Request $request, EntityManagerInterface $manager)
+    public function contactme(Request $request, DemandeNotifier $notifier)
     {
         $demande=new Demande();
 
-        $form=$this->createFormBuilder($demande)
-                    ->add('nom_entreprise')
-                    ->add('objectif')
-                    ->add('email', EmailType::class)
-                    ->add('telephone',TelType::class)
-                    ->add('envoyer',SubmitType::class,[
-                        'label'=> "Envoyer"
-                    ])
-                    ->getForm();
+        $form = $this->createForm(DemandeType::class, $demande);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($demande);
-            $manager->flush();
+            $notifier->notify($demande);
 
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('portfolio/contactme.html.twig',[
+        return $this->myrender('portfolio/contactme.html.twig',[
             'formDemande' => $form->createView()
         ]);
     }
