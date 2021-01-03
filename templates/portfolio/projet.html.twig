@@ -3,68 +3,79 @@
 {% set title = 'Elliot CARON' %}
 
 {% block body %}
-        <section>
-            <div class="container">
+    <section>
+        <div class="container">
 
-                <div class="row">
-                    <div class="col text-center text-primary my-4">
-                        <h1>{{ projet.nom }}</h1>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <p>{{ projet.description | raw }}</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="text-primary">Technologies utilisées : </h3>
-                    </div>
-
-
-                    {% for technologie in projet.technologies %}
-                    <div class="col-1">
-                        <div class="card">
-                            <img class="card-img-top text-center my-2" src="{{ asset('/images/' ~ technologie.image.fichier) }}" title="{{ technologie.nom }}">
-                        </div>
-                    </div>
-                    {% endfor %}
-
-                </div>
-
-                <div class="row my-4">
-                    <div class="col text-center">
-                        <a class="btn btn-secondary btn-lg text-white" href="{{ projet.github }}">GITHUB <i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div id="carouselExampleControls" class="carousel slide col-12" data-ride="carousel">
-                        <div class="carousel-inner">
-                            {% for image in projet.images %}
-                                {% if loop.first %}
-                                    <div class="carousel-item active">
-                                {% else %}
-                                    <div class="carousel-item">
-                                {% endif %}
-                                    <img class="d-block w-100" src="{{ asset('/images/'~ image.fichier)}}">
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col text-center text-primary my-4">
+                    <h1>{{ projet.nom }}</h1>
                 </div>
             </div>
-            <br/>
-        </section>
+
+            <div class="row">
+                <p>{{ projet.description | raw }}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="text-primary">Technologies utilisées : </h3>
+                </div>
+
+
+                {% for technologie in projet.technologies %}
+                <div class="col-xl-1 col-md-2 col-3">
+                    <div class="card my-2 border-secondary">
+                        <img class="card-img-top text-center my-2" src="{{ asset('/images/' ~ technologie.image.fichier) }}" title="{{ technologie.nom }}">
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="row my-4">
+                <div class="col text-center">
+                    <a class="btn btn-secondary btn-lg text-white" href="{{ projet.github }}">GITHUB <i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="carouselExampleControls" class="carousel slide col-12 mb-4" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for image in projet.images %}
+                            {% if loop.first %}
+                                <div class="carousel-item active border border-primary">
+                            {% else %}
+                                <div class="carousel-item border border-primary">
+                            {% endif %}
+                                <img class="d-block w-100" src="{{ asset('/images/'~ image.fichier)}}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for personne in projet.personnes %}
+                    <div class="col-lg-2 col-4 col-md-3 mb-3">
+                        <a href="{{ personne.lien }}">
+                        <div class="card border-primary rounded-circle">
+                            <img class="card-img-top text-center my-2 rounded-circle " src="{{ asset('/images/'~personne.image.fichier) }}">
+                        </div>
+                        <div class="card-text text-center">{{ personne.personne }} {{ personne.nom }}</div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
 
 {% endblock %}
