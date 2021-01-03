@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% set title = 'Elliot CARON' %}
+{% set title = 'Elliot CARON - Projet' %}
 
 {% block body %}
     <section>
@@ -34,19 +34,18 @@
 
             <div class="row my-4">
                 <div class="col text-center">
-                    <a class="btn btn-secondary btn-lg text-white" href="{{ projet.github }}">GITHUB <i class="fab fa-github"></i></a>
+                    <a class="btn btn-secondary btn-lg text-white" target="_blank" href="{{ projet.github }}">GITHUB <i class="fab fa-github"></i></a>
                 </div>
             </div>
 
             <div class="row">
                 <div id="carouselExampleControls" class="carousel slide col-12 mb-4" data-ride="carousel">
                     <div class="carousel-inner">
+                        <div class="carousel-item active border border-primary">
+                            <img class="d-block w-100" src="{{ asset('/images/'~ projet.couverture.fichier)}}">
+                        </div>
                         {% for image in projet.images %}
-                            {% if loop.first %}
-                                <div class="carousel-item active border border-primary">
-                            {% else %}
-                                <div class="carousel-item border border-primary">
-                            {% endif %}
+                            <div class="carousel-item border border-primary">
                                 <img class="d-block w-100" src="{{ asset('/images/'~ image.fichier)}}">
                             </div>
                         {% endfor %}
@@ -65,7 +64,7 @@
             <div class="row">
                 {% for personne in projet.personnes %}
                     <div class="col-lg-2 col-4 col-md-3 mb-3">
-                        <a href="{{ personne.lien }}">
+                        <a href="{{ personne.lien }}" target="_blank">
                         <div class="card border-primary rounded-circle">
                             <img class="card-img-top text-center my-2 rounded-circle " src="{{ asset('/images/'~personne.image.fichier) }}">
                         </div>

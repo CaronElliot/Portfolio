@@ -6,6 +6,7 @@
         </title>
         {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}
+            <link rel="shortcut icon" href="{{ asset('/images/shortcut.jpg') }}"/>
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -48,14 +49,14 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <br/>
-                        <a href="{{ path('contactme') }}" class="text-white"><h1>Contactez moi</h1></a>
+                        <a href="{{ path('contactme') }}" class="text-white"><h1>Contactez-moi !</h1></a>
                         <hr class="hrwhite"/>
                         <br/>
                     </div>
                 </div>
                 <div class="row offset-2">
                     <div class="col-5 text-center">
-                        <a href={{ asset('/images/CV_FR.pdf') }}><button type="button" class="btn btn-primary btn-lg">Télécharger mon C.V.</button></a>
+                        <a href={{ asset('/images/CV_F.pdf') }}><button type="button" class="btn btn-primary btn-lg">Télécharger mon C.V.</button></a>
                     </div>
                     <div class="col-4 text-center">
                         <a href={{ asset('/images/CV_AN.pdf') }}><button type="button" class="btn btn-primary btn-lg">Download my C.V.</button></a>
@@ -65,15 +66,15 @@
                 <br/>
                 <div class="row">
                     <div class="col-lg-4 col-md-12 text-center">
-                        <p style="font-size: 24px"><a href="tel:+33781278939" class="text-dark"><i class="fas fa-mobile-alt fa-3x" style="padding-bottom: 10px"></i> <br/>+33 7 81 27 89 39</a></p>
+                        <p style="font-size: 24px"><a href="tel:+33781278939" class="text-dark" target="_blank"><i class="fas fa-mobile-alt fa-3x" style="padding-bottom: 10px"></i> <br/>+33 7 81 27 89 39</a></p>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <p style="font-size: 24px"><a href="mailto:?to=Elliot.caron13@gmail.com" class="text-dark"><i class="fas fa-at fa-3x" style="padding-bottom: 10px"></i> <br/>elliot.caron13@gmail.com</a></p>
+                        <p style="font-size: 24px"><a href="mailto:?to=Elliot.caron13@gmail.com" class="text-dark" target="_blank"><i class="fas fa-at fa-3x" style="padding-bottom: 10px"></i> <br/>elliot.caron13@gmail.com</a></p>
                         <br/>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center">
-                        <p style="font-size: 24px"><a href="https://www.linkedin.com/in/elliot-caron/" class="text-dark"><i class="fab fa-linkedin-in fa-3x"
+                        <p style="font-size: 24px"><a href="https://www.linkedin.com/in/elliot-caron/" class="text-dark" target="_blank"><i class="fab fa-linkedin-in fa-3x"
                                 style="padding-bottom: 10px"></i> <br/>www.linkedin.com/in/elliot-caron</a></p>
                         <br/>
                     </div>
